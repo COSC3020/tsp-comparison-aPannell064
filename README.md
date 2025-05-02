@@ -22,3 +22,24 @@ Local Search found. Why is this?
 
 Add the code to run your experiments, graphs, and an explanation of what you did
 to this markdown file.
+
+## Runtime Notice
+
+If you look at the data, you may realize that neither algorithm reached an hour 
+for runtime. For the held-karp algorithm, this is because it seemed to just stop 
+when the input size was 24 cities. I left the program running for about 10 hours, 
+and it would not update anymore. As a result, I created another file to test local 
+search and resume where the previous attempt left off. This failed to reach an hour 
+because it started using too much memory, even after I allocated more to the JavaScript 
+heap. The program crashed after 22500 cities. 
+
+That said, I do still have a decent amount of data, so I think I will still be able to 
+have a relatively decent analysis. 
+
+## Analysis
+
+Below, you will see the graph comparing the runtimes of the two algorithms for the first 
+24 cities: 
+![time comparison](TimeCompare.png)
+
+
