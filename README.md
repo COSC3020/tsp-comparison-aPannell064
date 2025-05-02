@@ -59,7 +59,7 @@ Below, you will see the graph comparing the runtimes of the two algorithms for t
 24 cities: 
 ![time comparison](TimeCompare.png)
 As you can see, the time to run local search was incredibly insignificant compared to the 
-held-karp algorithm. Local search is only running in a fraction of a second, while local search 
+held-karp algorithm. Local search is only running in a fraction of a second, while held-karp
 gets up to just over 20 minutes for 23 cities. 
 
 In fact, it takes much longer for the time to become significantly noticeable as 
@@ -85,7 +85,7 @@ here:
 
 ## Extra Help
 
-Because I was writing to an excel file, I needed a way to do this I got the information 
+Because I was writing to an excel file, I needed a way to do this. I got the information 
 I needed from https://medium.com/@me.mohamed.elnagar/working-with-xlsx-files-in-javascript-a-beginners-guide-b649a06de8fc 
 and https://www.npmjs.com/package/xlsx
 
