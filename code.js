@@ -8,6 +8,8 @@ eval(fs.readFileSync('tsp_ls.js')+'');
 
 function tspTest() {
     var randomInt;
+
+    //Make data for excel file and print out headers for testing
     var data = [['Cities', 'Held-Karp Result', 'Held-Karp Time', 'Local Search Result', 'Local Search Time']];
     console.log("Cities".padEnd(30) + 
         "HK Result".padEnd(30) + 
@@ -20,6 +22,7 @@ function tspTest() {
     var dm = [];
     fs.writeFileSync("DM.txt", JSON.stringify(dm));
 
+    // Time initial input
     var startTime = performance.now();
     var hkResult = tsp_hk(dm);
     var hkTime = (performance.now() - startTime) / 1000;
@@ -32,6 +35,8 @@ function tspTest() {
         String(hkTime).padEnd(30) + 
         String(lsResult).padEnd(30) +  
         lsTime);
+
+    //Make excel sheet
     var ws = XLSX.utils.aoa_to_sheet(data);
     var wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
@@ -47,7 +52,8 @@ function tspTest() {
         lsResult = null;
         lsTime = null;
     }
-    
+
+    // Main loop to time both functions unless they are done
     while(!(hkDone && lsDone)) {
         dm.push([]);
         for(var i = 0; i < dm.length-1; i++) {
@@ -69,7 +75,8 @@ function tspTest() {
             lsResult = tsp_ls(dm);
             lsTime = (performance.now() - startTime) / 1000;
         }
-        
+
+        // Update data and output
         data.push([dm.length, hkResult, hkTime, lsResult, lsTime]);
         console.log(String(dm.length).padEnd(30) + 
             String(hkResult).padEnd(30) + 
