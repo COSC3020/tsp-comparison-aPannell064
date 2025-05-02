@@ -2,12 +2,11 @@ const { performance } = require('perf_hooks');
 const XLSX = require('xlsx');
 const fs = require('fs');
 
-eval(fs.readFileSync('tsp_hk.js')+'');
 eval(fs.readFileSync('tsp_ls.js')+'');
 
 function lsTest() {
     var randomInt;
-
+    // Get data in exel file
     var wb = XLSX.readFile('data.xlsx');
     var sheetName = wb.SheetNames[0];
     var ws = wb.Sheets[sheetName];
@@ -29,8 +28,9 @@ function lsTest() {
     wb.Sheets[sheetName] = ws;
     XLSX.writeFile(wb, "data.xlsx");
 
-
+    // Test until time is over an hour
     while(time < 3600) {
+        // Increase input size by 500
          do
          {
             dm.push([]);
@@ -42,11 +42,12 @@ function lsTest() {
             dm[dm.length-1].push(0);
         } while (dm.length % 500)
 
-
+        // Test
         startTime = performance.now();
         lsResult = tsp_ls(dm);
         time = (performance.now() - startTime) / 1000;
 
+        // Update data and output
         data.push([dm.length, null, null, lsResult, time]);
         console.log(String(dm.length).padEnd(30) +
             String(lsResult).padEnd(30) +
