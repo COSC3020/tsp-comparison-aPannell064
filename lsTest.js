@@ -6,7 +6,7 @@ eval(fs.readFileSync('tsp_ls.js')+'');
 
 function lsTest() {
     var randomInt;
-    // Get data in exel file
+    // Get data in excel file
     var wb = XLSX.readFile('data.xlsx');
     var sheetName = wb.SheetNames[0];
     var ws = wb.Sheets[sheetName];
